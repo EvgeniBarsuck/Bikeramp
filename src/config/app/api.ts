@@ -4,7 +4,7 @@ export const api = {
   },
   stats: {
     apiTag: 'Stats',
-    getMouthly: 'stats/monthly',
+    getMouthlyStats: 'stats/monthly',
     getWeeklyStats: 'stats/weekly',
   },
   trip: {

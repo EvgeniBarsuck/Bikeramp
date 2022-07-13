@@ -1,3 +1,3 @@
-import { CreateStatsController, GetWeeklyStatsController } from '@modules/stats/controllers';
+import { CreateStatsController, GetWeeklyStatsController, GetMouthlyStatsController } from '@modules/stats/controllers';
 
-export const controllersStats = [CreateStatsController, GetWeeklyStatsController];
+export const controllersStats = [CreateStatsController, GetWeeklyStatsController, GetMouthlyStatsController];
