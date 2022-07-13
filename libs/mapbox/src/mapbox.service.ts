@@ -11,22 +11,23 @@ import { DIRECTION, ROUTE, VERSION } from './types';
 
 @Injectable()
 export class MapboxService extends Mapbox {
-  private readonly accessToken: string;
-  private readonly baseUrl: string;
+  private accessToken: string;
+  private baseUrl: string;
 
-  constructor(private readonly httpService: HttpService, accessToken: string, baseUrl: string) {
-    super();
+  public setParams(accessToken: string, baseUrl: string) {
     this.accessToken = accessToken;
     this.baseUrl = baseUrl;
   }
 
+  constructor(private readonly httpService: HttpService) {
+    super();
+  }
+
   async getCoordinatesByAddress(address: string): Promise<GetCoordinatesByAddressResponseDTO> {
     try {
-      const path = getPath(this.baseUrl, VERSION.V5, ROUTE.GEOCODING, DIRECTION.MAPBOX_PLACES);
-
-      const response = await lastValueFrom(
-        this.httpService.get(`${path}${apiConfig.getGeocoding(address, DIRECTION.MAPBOX_PLACES, this.accessToken)}`),
-      );
+      const basePath = getPath(this.baseUrl, VERSION.V5, ROUTE.GEOCODING, DIRECTION.MAPBOX_PLACES);
+      const fullPaht = `${basePath}${apiConfig.getGeocoding(address, this.accessToken)}`;
+      const response = await lastValueFrom(this.httpService.get(fullPaht));
 
       return response.data;
     } catch (e) {

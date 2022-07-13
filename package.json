@@ -27,6 +27,8 @@
     "@nestjs/core": "^8.0.0",
     "@nestjs/cqrs": "^9.0.0",
     "@nestjs/platform-express": "^8.0.0",
+    "@nestjs/swagger": "^6.0.3",
+    "@nestjs/typeorm": "^9.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-sort-destructure-keys": "^1.4.0",
     "eslint-plugin-typescript-sort-keys": "^2.1.0",
