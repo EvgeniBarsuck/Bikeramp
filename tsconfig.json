@@ -20,7 +20,9 @@
     "paths": {
       "@modules/*": ["src/modules/*"],
       "@config/*": ["src/config/*"],
-      "@libs/*": ["libs/*"]
+      "@libs/*": ["libs/*"],
+      "@helpers/*": ["src/helpers/*"],
+      "@types/*": ["src/types/*"]
     },
     "outDir": "./dist",
     "baseUrl": "./",

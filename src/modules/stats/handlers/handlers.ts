@@ -1,3 +1,3 @@
 import { CreateStatsHandler } from './';
 
-export const handlers = [CreateStatsHandler];
+export const commandStatsHandlers = [CreateStatsHandler];
