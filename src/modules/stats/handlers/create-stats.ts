@@ -1,5 +1,5 @@
 import { config } from '@config/app/config';
-import { formatDistanceWithName, parseDistance } from '@helpers';
+import { formatPriceWithoutCurrencyName, parseDistance } from '@helpers';
 import { Mapbox } from '@libs/mapbox/src/mapbox.service.interface';
 import { CreateStatsCommand } from '@modules/stats/commands';
 import { StatsEntity } from '@modules/stats/entities';
@@ -49,8 +49,8 @@ export class CreateStatsHandler implements ICommandHandler<CreateStatsCommand> {
 
       const statsRecord = new StatsEntity({
         createdAt: new Date(date),
-        totalDistance: formatDistanceWithName(parseDistance(distance, DISTANCE_TYPE.KM), DISTANCE_TYPE.KM),
-        totalPrice: price,
+        totalDistance: parseDistance(distance, DISTANCE_TYPE.KM),
+        totalPrice: formatPriceWithoutCurrencyName(price),
       });
 
       await this.statsRepository.save(statsRecord);

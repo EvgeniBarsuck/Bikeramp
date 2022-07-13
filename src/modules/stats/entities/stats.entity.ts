@@ -15,11 +15,11 @@ export class StatsEntity {
   @PrimaryGeneratedColumn('uuid')
   readonly id: string;
 
-  @Column('varchar', { name: 'total_distance' })
-  totalDistance: string;
+  @Column('double precision', { name: 'total_distance' })
+  totalDistance: number;
 
-  @Column('varchar', { name: 'total_price' })
-  totalPrice: string;
+  @Column('double precision', { name: 'total_price' })
+  totalPrice: number;
 
   @CreateDateColumn({ name: 'updated_at' })
   updatedAt: Date;

@@ -1,3 +1,3 @@
-import { GetStatsByIdHandler } from './';
+import { GetWeeklyStatsHandler } from '@modules/stats/queries';
 
-export const queries = [GetStatsByIdHandler];
+export const queriesStatsHandlers = [GetWeeklyStatsHandler];
