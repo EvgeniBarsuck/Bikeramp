@@ -1,11 +1,10 @@
-import { formatDistanceWithName, formatPriceWithCurrencyName } from '@helpers';
+import { formatDistanceWithName, formatPriceWithCurrencyName, getLastMonday } from '@helpers';
 import { StatsEntity } from '@modules/stats/entities';
 import { CURRENCY_TYPES } from '@modules/types/currency';
 import { DISTANCE_TYPE } from '@modules/types/distance';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { InjectRepository } from '@nestjs/typeorm';
-import { getLastMonday } from 'src/helpers/get-last-monday';
-import { MoreThan, Repository } from 'typeorm';
+import { Between, Repository } from 'typeorm';
 
 export class GetWeeklyStatsQuery {}
 
@@ -18,7 +17,7 @@ export class GetWeeklyStatsHandler implements IQueryHandler<GetWeeklyStatsQuery>
 
     const entities = await this.statsRepository.find({
       where: {
-        createdAt: MoreThan(lastMonday),
+        createdAt: Between(lastMonday, new Date()),
       },
     });
 
@@ -32,8 +31,10 @@ export class GetWeeklyStatsHandler implements IQueryHandler<GetWeeklyStatsQuery>
       { totalDistance: 0, totalPrice: 0 },
     );
 
-    const totalDistance = formatDistanceWithName(weeklyResult.totalDistance, DISTANCE_TYPE.KM);
-    const totalPrice = formatPriceWithCurrencyName(weeklyResult.totalPrice, CURRENCY_TYPES.PLN);
+    const fixedDistance = Number(weeklyResult.totalDistance.toFixed(1));
+    const fixedPrice = Number(weeklyResult.totalPrice.toFixed(1));
+    const totalDistance = formatDistanceWithName(fixedDistance, DISTANCE_TYPE.KM);
+    const totalPrice = formatPriceWithCurrencyName(fixedPrice, CURRENCY_TYPES.PLN);
 
     return { totalDistance, totalPrice };
   }

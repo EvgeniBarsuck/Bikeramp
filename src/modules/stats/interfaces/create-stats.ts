@@ -24,7 +24,7 @@ export class CreateStats {
   price: string;
 
   @ApiProperty({
-    example: '03/03/2022',
+    example: 'mm-dd-yyyy',
     name: 'date',
     type: 'date',
   })

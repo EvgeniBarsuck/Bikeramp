@@ -1,8 +1,8 @@
 export interface SerializedException {
-  message: string;
   code: number | string;
-  stack?: string;
+  message: string;
   metadata?: unknown;
+  stack?: string;
 }
 
 /**
