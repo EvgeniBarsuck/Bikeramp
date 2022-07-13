@@ -21,7 +21,7 @@ services:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
       MAP_BASE_URL: https://api.mapbox.com
-      MAP_TOKEN: pk.eyJ1IjoiZnVyeWludGhlZmFpciIsImEiOiJjbDVqZDZjODUwZHUzM2pwejRhM245OWcyIn0.sO3z8J203mhuwgme3qW4Jw
+      MAP_TOKEN: token
       DB_TYPE: postgres
     depends_on:
       - api-db
