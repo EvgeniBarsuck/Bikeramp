@@ -21,8 +21,8 @@
       "@modules/*": ["src/modules/*"],
       "@config/*": ["src/config/*"],
       "@libs/*": ["libs/*"],
-      "@helpers/*": ["src/helpers/*"],
-      "@types/*": ["src/types/*"]
+      "@helpers": ["src/helpers/"],
+      "@types": ["src/types/"]
     },
     "outDir": "./dist",
     "baseUrl": "./",
