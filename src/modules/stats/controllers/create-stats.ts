@@ -18,11 +18,9 @@ export class CreateStatsController {
     description: 'Record about trip added successfully',
   })
   @Post(api.trip.createTrip)
-  async createStats(@Body() stats: CreateStats): Promise<object> {
+  async createStats(@Body() stats: CreateStats): Promise<void> {
     const command = new CreateStatsCommand(stats);
 
-    const result = await this.commandBus.execute(command);
-
-    return result;
+    await this.commandBus.execute(command);
   }
 }

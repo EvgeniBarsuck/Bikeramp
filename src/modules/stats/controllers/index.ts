@@ -1,2 +1,2 @@
 export * from './create-stats';
-export * from './controllers-stats';
+export * from './get-weekly-stats';
