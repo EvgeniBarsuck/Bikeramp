@@ -16,13 +16,13 @@ export class CreateStatsHandler implements ICommandHandler<CreateStatsCommand> {
     private readonly mapboxService: Mapbox,
   ) {}
 
-  async execute({ createStats: { date, destinationAddress, price, startAddress, type } }: CreateStatsCommand) {
+  async execute({ createStats: { date, destination_address, price, start_address, type } }: CreateStatsCommand) {
     const mapConfig = config.mapApi;
 
     this.mapboxService.setParams(mapConfig.MAP_TOKEN, mapConfig.MAP_BASE_URL);
 
-    const startCoordinatesDataPromises = this.mapboxService.getCoordinatesByAddress(startAddress);
-    const finishCoordinatesDataPromises = this.mapboxService.getCoordinatesByAddress(destinationAddress);
+    const startCoordinatesDataPromises = this.mapboxService.getCoordinatesByAddress(start_address);
+    const finishCoordinatesDataPromises = this.mapboxService.getCoordinatesByAddress(destination_address);
 
     try {
       const [startCoordinatesData, finishCoordinatesData] = await Promise.all([

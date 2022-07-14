@@ -17,7 +17,7 @@ export class MonthlyInfoByDayDTO {
 
   @ApiProperty({
     example: 'July, 5th',
-    name: 'dat',
+    name: 'day',
     type: 'string',
   })
   day: string;
