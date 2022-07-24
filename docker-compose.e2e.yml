@@ -1,0 +1,48 @@
+version: '3.9'
+
+services:
+  test-api-db:
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    image: postgres:alpine
+    environment:
+      POSTGRES_DB: test
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      PG_DATA: /var/lib/postgresql/data
+    ports: 
+     - "5432:5432"
+    networks:
+      - webnet      
+
+  test-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.test.api
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    working_dir: /usr/src/app
+    command: bash -c "yarn test:e2e && yarn test"
+    ports:
+      - "3500:3500"
+    environment:
+      NODE_ENV: test
+      POSTGRES_HOST: test-api-db
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: test
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      MAP_BASE_URL: https://api.mapbox.com
+      MAP_TOKEN: test
+    depends_on:
+      - test-api-db
+    networks:
+      - webnet
+
+networks:
+  webnet:
+
+volumes:
+  pgdata:
+  logs:

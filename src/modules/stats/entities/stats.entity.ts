@@ -4,11 +4,12 @@ import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeor
 export class StatsEntity {
   constructor(props: Partial<StatsEntity>) {
     if (props) {
-      const { createdAt, totalDistance, totalPrice } = props;
+      const { createdAt, totalDistance, totalPrice, updatedAt } = props;
 
       this.totalDistance = totalDistance;
       this.totalPrice = totalPrice;
       this.createdAt = createdAt;
+      this.updatedAt = updatedAt;
     }
   }
 

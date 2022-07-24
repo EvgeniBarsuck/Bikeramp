@@ -4,6 +4,7 @@ export interface Config {
   DB_TYPE: string;
   MAP_BASE_URL: string;
   MAP_TOKEN: string;
+  NODE_ENV: string;
   POSTGRES_DB: string;
   POSTGRES_HOST: string;
   POSTGRES_PASSWORD: string;
@@ -14,6 +15,7 @@ export interface Config {
 export const configService = new ConfigService<Config>();
 
 export const config = {
+  NODE_ENV: configService.get('NODE_ENV'),
   database: {
     DB_TYPE: configService.get<'postgres' | 'mongodb'>('DB_TYPE') || 'postgres',
     POSTGRES_DB: configService.get<string>('POSTGRES_DB'),

@@ -1,10 +1,10 @@
 import { config } from '@config/app/config';
 import { formatPriceWithoutCurrencyName, parseDistance } from '@helpers';
+import { HttpExceptionFactory } from '@libs/exceptions';
 import { Mapbox } from '@libs/mapbox/src/mapbox.service.interface';
 import { CreateStatsCommand } from '@modules/stats/commands';
 import { StatsEntity } from '@modules/stats/entities';
 import { DISTANCE_TYPE } from '@modules/types/distance';
-import { HttpException } from '@nestjs/common';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -51,13 +51,14 @@ export class CreateStatsHandler implements ICommandHandler<CreateStatsCommand> {
         createdAt: new Date(date),
         totalDistance: parseDistance(distance, DISTANCE_TYPE.KM),
         totalPrice: formatPriceWithoutCurrencyName(price),
+        updatedAt: new Date(date),
       });
 
       await this.statsRepository.save(statsRecord);
 
       return Promise.resolve(undefined);
     } catch (e) {
-      throw new HttpException(e.message, e.status);
+      throw HttpExceptionFactory.getException(e.status, e.message);
     }
   }
 }
