@@ -1,0 +1,35 @@
+export const requestStubs = {
+  case_1: null,
+  case_2: null,
+  case_3: {
+    date: '07-01-2022',
+    destination_address: 'Marszałkowska 80, Warszawa,  Polska',
+    price: '45PLN',
+    start_address: 'Plac Europejski 21, Warszawa, Polska',
+    type: 'walking',
+  },
+  case_4: {
+    date: '07-22-2022',
+    destination_address: 'Marszałkowska 10, Warszawa,  Polska',
+    price: '45PLN',
+    start_address: 'Plac Europejski 21, Warszawa, Polska',
+    type: 'walking',
+  },
+  case_5: {
+    date: '07-22-2022',
+    destination_address: 'Marszałkowska 140, Warszawa,  Polska',
+    price: '30PLN',
+    start_address: 'Plac Europejski 1, Warszawa, Polska',
+    type: 'walking',
+  },
+  case_6: null,
+  case_7: null,
+  case_8: {},
+  case_9: {
+    date: 23,
+    destination_address: 23,
+    price: 23,
+    start_address: null,
+    type: undefined,
+  },
+};
