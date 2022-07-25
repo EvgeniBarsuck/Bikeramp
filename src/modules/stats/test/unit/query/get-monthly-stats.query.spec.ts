@@ -22,31 +22,31 @@ describe('Unit testing for monthly stats query', () => {
     });
 
     it(`Case 1. Return value expected: ${JSON.stringify(responseStubs.case_1)}`, () => {
-      expect(JSON.stringify(_response)).toBe(JSON.stringify(responseStubs.case_1));
+      expect(_response).toEqual(responseStubs.case_1);
     });
 
     it(`Case 2. Return value expected: ${JSON.stringify(responseStubs.case_2)}`, () => {
-      expect(JSON.stringify(_response)).toBe(JSON.stringify(responseStubs.case_2));
+      expect(_response).toEqual(responseStubs.case_2);
     });
 
     it(`Case 3. Return value expected: ${JSON.stringify(responseStubs.case_3)}`, () => {
-      expect(JSON.stringify(_response)).toBe(JSON.stringify(responseStubs.case_3));
+      expect(_response).toEqual(responseStubs.case_3);
     });
 
     it(`Case 4. Return value expected: ${JSON.stringify(responseStubs.case_4)}`, () => {
-      expect(JSON.stringify(_response)).toBe(JSON.stringify(responseStubs.case_4));
+      expect(_response).toEqual(responseStubs.case_4);
     });
 
     it(`Case 5. Return value expected: ${JSON.stringify(responseStubs.case_5)}`, () => {
-      expect(JSON.stringify(_response)).toBe(JSON.stringify(responseStubs.case_5));
+      expect(_response).toEqual(responseStubs.case_5);
     });
 
     it(`Case 6. Return value expected: ${JSON.stringify(responseStubs.case_6)}`, () => {
-      expect(JSON.stringify(_response)).toBe(JSON.stringify(responseStubs.case_6));
+      expect(_response).toEqual(responseStubs.case_6);
     });
 
     it(`Case 7. Return value expected: ${JSON.stringify(responseStubs.case_7)}`, () => {
-      expect(JSON.stringify(_response)).toBe(JSON.stringify(responseStubs.case_7));
+      expect(_response).toEqual(responseStubs.case_7);
     });
   });
 
